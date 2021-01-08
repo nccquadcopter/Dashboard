@@ -28,9 +28,18 @@ fig1.update_layout(
 )
 
 #Sensor2
-fig2 = px.line(df, x="sensor_time", y="magx", title='Sensor2')
+fig2 = px.line(df, x="sensor_time", y="magy", title='Sensor2')
 
 fig2.update_layout(
+    plot_bgcolor=colors['background'],
+    paper_bgcolor=colors['background'],
+    font_color=colors['text']
+)
+
+#Sensor3
+fig3 = px.line(df, x="sensor_time", y="magz", title='Sensor3')
+
+fig3.update_layout(
     plot_bgcolor=colors['background'],
     paper_bgcolor=colors['background'],
     font_color=colors['text']
@@ -71,7 +80,12 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     dcc.Graph(
         id='sensor2_graph',
         figure=fig2
-    )
+    ),
+
+   dcc.Graph(
+        id='sensor3_graph',
+        figure=fig3
+    )    
 ])
 
 if __name__ == '__main__':
